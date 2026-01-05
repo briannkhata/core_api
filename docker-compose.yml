@@ -1,0 +1,296 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: yathu_erp
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - yathu-erp-network
+
+  # Employee Service
+  employee-service:
+    build: ./services/employee-service
+    ports:
+      - "8081:8081"
+    environment:
+      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathu_erp?sslmode=disable
+      - JWT_SECRET: your-super-secret-jwt-key
+      - LOG_LEVEL: info
+      - PORT: 8081
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - yathu-erp-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8081/health", "||", "exit", "1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Organization Service
+  organization-service:
+    build: ./services/organization-service
+    ports:
+      - "8082:8082"
+    environment:
+      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathu_erp?sslmode=disable
+      - JWT_SECRET: your-super-secret-jwt-key
+      - LOG_LEVEL: info
+      - PORT: 8082
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - yathu-erp-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8082/health", "||", "exit", "1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Attendance Service
+  attendance-service:
+    build: ./services/attendance-service
+    ports:
+      - "8083:8083"
+    environment:
+      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathu_erp?sslmode=disable
+      - JWT_SECRET: your-super-secret-jwt-key
+      - LOG_LEVEL: info
+      - PORT: 8083
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - yathu-erp-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8083/health", "||", "exit", "1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Leave Service
+  leave-service:
+    build: ./services/leave-service
+    ports:
+      - "8084:8084"
+    environment:
+      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathu_erp?sslmode=disable
+      - JWT_SECRET: your-super-secret-jwt-key
+      - LOG_LEVEL: info
+      - PORT: 8084
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - yathu-erp-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8084/health", "||", "exit", "1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Loan Service
+  loan-service:
+    build: ./services/loan-service
+    ports:
+      - "8085:8085"
+    environment:
+      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathu_erp?sslmode=disable
+      - JWT_SECRET: your-super-secret-jwt-key
+      - LOG_LEVEL: info
+      - PORT: 8085
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - yathu-erp-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8085/health", "||", "exit", "1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Payroll Service
+  payroll-service:
+    build: ./services/payroll-service
+    ports:
+      - "8086:8086"
+    environment:
+      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathu_erp?sslmode=disable
+      - JWT_SECRET: your-super-secret-jwt-key
+      - LOG_LEVEL: info
+      - PORT: 8086
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - yathu-erp-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8086/health", "||", "exit", "1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Earnings Service
+  earnings-service:
+    build: ./services/earnings-service
+    ports:
+      - "8087:8087"
+    environment:
+      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathu_erp?sslmode=disable
+      - JWT_SECRET: your-super-secret-jwt-key
+      - LOG_LEVEL: info
+      - PORT: 8087
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - yathu-erp-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8087/health", "||", "exit", "1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Deductions Service
+  deductions-service:
+    build: ./services/deductions-service
+    ports:
+      - "8088:8088"
+    environment:
+      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathu_erp?sslmode=disable
+      - JWT_SECRET: your-super-secret-jwt-key
+      - LOG_LEVEL: info
+      - PORT: 8088
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - yathu-erp-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8088/health", "||", "exit", "1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Performance Service
+  performance-service:
+    build: ./services/performance-service
+    ports:
+      - "8089:8089"
+    environment:
+      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathu_erp?sslmode=disable
+      - JWT_SECRET: your-super-secret-jwt-key
+      - LOG_LEVEL: info
+      - PORT: 8089
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - yathu-erp-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8089/health", "||", "exit", "1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Banking Service
+  banking-service:
+    build: ./services/banking-service
+    ports:
+      - "8090:8090"
+    environment:
+      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathu_erp?sslmode=disable
+      - JWT_SECRET: your-super-secret-jwt-key
+      - LOG_LEVEL: info
+      - PORT: 8090
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - yathu-erp-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8090/health", "||", "exit", "1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Auth Service
+  auth-service:
+    build: ./services/auth-service
+    ports:
+      - "8091:8091"
+    environment:
+      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathu_erp?sslmode=disable
+      - JWT_SECRET: your-super-secret-jwt-key
+      - LOG_LEVEL: info
+      - PORT: 8091
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - yathu-erp-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8091/health", "||", "exit", "1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Config Service
+  config-service:
+    build: ./services/config-service
+    ports:
+      - "8092:8092"
+    environment:
+      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathu_erp?sslmode=disable
+      - JWT_SECRET: your-super-secret-jwt-key
+      - LOG_LEVEL: info
+      - PORT: 8092
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - yathu-erp-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8092/health", "||", "exit", "1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Audit Service
+  audit-service:
+    build: ./services/audit-service
+    ports:
+      - "8093:8093"
+    environment:
+      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathu_erp?sslmode=disable
+      - JWT_SECRET: your-super-secret-jwt-key
+      - LOG_LEVEL: info
+      - PORT: 8093
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - yathu-erp-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8093/health", "||", "exit", "1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  yathu-erp-network:
+    driver: bridge
+
+volumes:
+  postgres_data:

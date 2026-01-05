@@ -1,0 +1,18 @@
+go 1.22
+
+use (
+	./shared
+	./services/employee-service
+	./services/organization-service
+	./services/attendance-service
+	./services/leave-service
+	./services/loan-service
+	./services/payroll-service
+	./services/earnings-service
+	./services/deductions-service
+	./services/performance-service
+	./services/banking-service
+	./services/auth-service
+	./services/config-service
+	./services/audit-service
+)
