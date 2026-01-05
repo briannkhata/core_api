@@ -8,13 +8,13 @@ import (
 	"syscall"
 	"time"
 
-	"yathu_erp/shared/config"
-	"yathu_erp/shared/database"
-	"yathu_erp/shared/logger"
-	"yathu_erp/shared/middleware"
+	"yathuerp/shared/config"
+	"yathuerp/shared/database"
+	"yathuerp/shared/logger"
+	"yathuerp/shared/middleware"
 
-	"yathu_erp/services/employee/internal/infrastructure/http"
-	"yathu_erp/services/employee/internal/infrastructure/persistence/postgres"
+	"yathuerp/services/employee/internal/infrastructure/http"
+	"yathuerp/services/employee/internal/infrastructure/persistence/postgres"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"

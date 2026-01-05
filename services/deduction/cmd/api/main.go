@@ -8,10 +8,10 @@ import (
 	"syscall"
 	"time"
 
-	"yathu_erp/shared/config"
-	"yathu_erp/shared/database"
-	"yathu_erp/shared/logger"
-	"yathu_erp/shared/middleware"
+	"yathuerp/shared/config"
+	"yathuerp/shared/database"
+	"yathuerp/shared/logger"
+	"yathuerp/shared/middleware"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
