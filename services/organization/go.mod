@@ -1,4 +1,4 @@
-module yathu_erp/services/organization-service
+module yathuerp/services/organization
 
 go 1.22
 

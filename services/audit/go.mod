@@ -1,4 +1,4 @@
-module yathu_erp/services/audit-service
+module yathuerp/services/audit
 
 go 1.22
 

@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"yathu_erp/services/employee-service/internal/domain"
-	"yathu_erp/shared/logger"
+	"yathuerp/services/employee-service/internal/domain"
+	"yathuerp/shared/logger"
 
 	"github.com/google/uuid"
 	"github.com/jackc/pgx/v5/pgxpool"

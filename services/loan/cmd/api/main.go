@@ -33,7 +33,7 @@ func main() {
 	}
 
 	// Run migrations
-	if err := database.RunMigrations(db, "loan-service"); err != nil {
+	if err := database.RunMigrations(db, "loan"); err != nil {
 		log.Fatal("Failed to run migrations:", err)
 	}
 
@@ -60,7 +60,7 @@ func main() {
 	app.Get("/health", func(c *fiber.Ctx) error {
 		return c.JSON(fiber.Map{
 			"status":  "ok",
-			"service": "loan-service",
+			"service": "loan",
 			"version": "1.0.0",
 		})
 	})
@@ -74,7 +74,7 @@ func main() {
 		signal.Notify(sig, syscall.SIGINT, syscall.SIGTERM)
 		<-sig
 
-		logger.Info("Shutting down loan-service...")
+		logger.Info("Shutting down loan...")
 
 		ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 		defer cancel()
@@ -95,7 +95,7 @@ func setupRoutes(app *fiber.App, db interface{}) {
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.JSON(fiber.Map{
 			"message":    "YathuERP Loan Service is running",
-			"service":    "loan-service",
+			"service":    "loan",
 			"go_version": "1.22",
 		})
 	})

@@ -1,4 +1,4 @@
-module yathu_erp/services/loan-service
+module yathuerp/services/loan
 
 go 1.22
 

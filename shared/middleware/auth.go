@@ -5,8 +5,8 @@ import (
 	"strings"
 	"time"
 
-	"yathu_erp/shared/logger"
-	"yathu_erp/shared/utils"
+	"yathuerp/shared/logger"
+	"yathuerp/shared/utils"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/golang-jwt/jwt/v5"

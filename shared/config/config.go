@@ -53,7 +53,7 @@ func getDatabaseURL() string {
 		Port:     getEnvAsInt("DB_PORT", 5432),
 		User:     getEnv("DB_USER", "postgres"),
 		Password: getEnv("DB_PASSWORD", "password"),
-		DBName:   getEnv("DB_NAME", "yathu_erp"),
+		DBName:   getEnv("DB_NAME", "yathuerp"),
 		SSLMode:  getEnv("DB_SSL_MODE", "disable"),
 	}
 

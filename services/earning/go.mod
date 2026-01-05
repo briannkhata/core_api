@@ -1,4 +1,4 @@
-module yathu_erp/services/earnings-service
+module yathuerp/services/earnings
 
 go 1.22
 

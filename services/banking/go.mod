@@ -1,4 +1,4 @@
-module yathu_erp/services/banking-service
+module yathuerp/services/banking
 
 go 1.22
 

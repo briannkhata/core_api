@@ -2,7 +2,7 @@ package dto
 
 import (
 	"time"
-	"yathu_erp/services/employee-service/internal/domain"
+	"yathuerp/services/employee-service/internal/domain"
 
 	"github.com/google/uuid"
 )

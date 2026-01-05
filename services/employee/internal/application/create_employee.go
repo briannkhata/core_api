@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
-	"yathu_erp/services/employee-service/internal/domain"
-	"yathu_erp/shared/logger"
+	"yathuerp/services/employee-service/internal/domain"
+	"yathuerp/shared/logger"
 
 	"github.com/google/uuid"
 )

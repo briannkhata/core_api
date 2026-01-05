@@ -7,21 +7,21 @@
 ## 🏗️ Architecture Based on MySQL Schema
 
 ```
-yathu_erp/                         # MAIN PROJECT ROOT
+yathuerp/                         # MAIN PROJECT ROOT
 ├── services/                         # All microservices
-│   ├── employee-service/             # Employee Management (Port 8081)
-│   ├── organization-service/         # Organization Management (Port 8082)
-│   ├── attendance-service/            # Time & Attendance (Port 8083)
-│   ├── leave-service/               # Leave Management (Port 8084)
-│   ├── loan-service/                # Loan Management (Port 8085)
-│   ├── payroll-service/              # Payroll Management (Port 8086)
-│   ├── earnings-service/             # Earnings & Allowances (Port 8087)
-│   ├── deductions-service/           # Deductions & Taxes (Port 8088)
-│   ├── performance-service/          # Performance Management (Port 8089)
-│   ├── banking-service/             # Banking & Benefits (Port 8090)
-│   ├── auth-service/               # Authentication & Authorization (Port 8091)
-│   ├── config-service/             # System Configuration (Port 8092)
-│   └── audit-service/              # Audit & Settings (Port 8093)
+│   ├── employee/             # Employee Management (Port 8081)
+│   ├── organization/         # Organization Management (Port 8082)
+│   ├── attendance/            # Time & Attendance (Port 8083)
+│   ├── leave/               # Leave Management (Port 8084)
+│   ├── loan/                # Loan Management (Port 8085)
+│   ├── payroll/              # Payroll Management (Port 8086)
+│   ├── earnings/             # Earnings & Allowances (Port 8087)
+│   ├── deductions/           # Deductions & Taxes (Port 8088)
+│   ├── performance/          # Performance Management (Port 8089)
+│   ├── banking/             # Banking & Benefits (Port 8090)
+│   ├── auth/               # Authentication & Authorization (Port 8091)
+│   ├── config/             # System Configuration (Port 8092)
+│   └── audit/              # Audit & Settings (Port 8093)
 ├── shared/                           # Shared libraries
 │   ├── config/                 # Configuration management
 │   ├── database/               # Database utilities
@@ -48,7 +48,7 @@ yathu_erp/                         # MAIN PROJECT ROOT
 1. **Clone and Setup**
 ```bash
 git clone <repository-url>
-cd yathu_erp
+cd yathuerp
 go work sync
 ```
 
@@ -121,12 +121,12 @@ LOG_LEVEL=info
 TIMEOUT_SECONDS=30
 
 # Database Configuration
-DATABASE_URL=postgres://user:password@localhost:5432/yathu_erp?sslmode=disable
+DATABASE_URL=postgres://user:password@localhost:5432/yathuerp?sslmode=disable
 DB_HOST=localhost
 DB_PORT=5432
 DB_USER=postgres
 DB_PASSWORD=password
-DB_NAME=yathu_erp
+DB_NAME=yathuerp
 DB_SSL_MODE=disable
 
 # Security
@@ -144,7 +144,7 @@ services:
   postgres:
     image: postgres:15
     environment:
-      POSTGRES_DB: yathu_erp
+      POSTGRES_DB: yathuerp
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
     volumes:
@@ -159,7 +159,7 @@ services:
     ports:
       - "8081:8081"
     environment:
-      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathu_erp?sslmode=disable
+      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathuerp?sslmode=disable
       - JWT_SECRET: your-super-secret-jwt-key
       - LOG_LEVEL: info
     depends_on:

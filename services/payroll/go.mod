@@ -1,4 +1,4 @@
-module yathu_erp/services/payroll-service
+module yathuerp/services/payroll
 
 go 1.22
 

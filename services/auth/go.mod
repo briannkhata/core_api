@@ -1,4 +1,4 @@
-module yathu_erp/services/auth-service
+module yathuerp/services/auth
 
 go 1.22
 

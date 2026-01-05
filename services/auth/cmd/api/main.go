@@ -33,7 +33,7 @@ func main() {
 	}
 
 	// Run migrations
-	if err := database.RunMigrations(db, "auth-service"); err != nil {
+	if err := database.RunMigrations(db, "auth"); err != nil {
 		log.Fatal("Failed to run migrations:", err)
 	}
 
@@ -60,7 +60,7 @@ func main() {
 	app.Get("/health", func(c *fiber.Ctx) error {
 		return c.JSON(fiber.Map{
 			"status":  "ok",
-			"service": "auth-service",
+			"service": "auth",
 			"version": "1.0.0",
 		})
 	})
@@ -74,7 +74,7 @@ func main() {
 		signal.Notify(sig, syscall.SIGINT, syscall.SIGTERM)
 		<-sig
 
-		logger.Info("Shutting down auth-service...")
+		logger.Info("Shutting down auth...")
 
 		ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 		defer cancel()
@@ -95,7 +95,7 @@ func setupRoutes(app *fiber.App, db interface{}) {
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.JSON(fiber.Map{
 			"message":    "YathuERP Auth Service is running",
-			"service":    "auth-service",
+			"service":    "auth",
 			"go_version": "1.22",
 		})
 	})

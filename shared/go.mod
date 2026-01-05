@@ -1,4 +1,4 @@
-module yathu_erp/shared
+module yathuerp/shared
 
 go 1.22
 

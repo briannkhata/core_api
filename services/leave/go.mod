@@ -1,4 +1,4 @@
-module yathu_erp/services/leave-service
+module yathuerp/services/leave
 
 go 1.22
 

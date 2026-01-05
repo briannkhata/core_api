@@ -5,7 +5,7 @@ services:
   postgres:
     image: postgres:15
     environment:
-      POSTGRES_DB: yathu_erp
+      POSTGRES_DB: yathuerp
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
     volumes:
@@ -16,12 +16,12 @@ services:
       - yathu-erp-network
 
   # Employee Service
-  employee-service:
-    build: ./services/employee-service
+  employee:
+    build: ./services/employee
     ports:
       - "8081:8081"
     environment:
-      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathu_erp?sslmode=disable
+      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathuerp?sslmode=disable
       - JWT_SECRET: your-super-secret-jwt-key
       - LOG_LEVEL: info
       - PORT: 8081
@@ -37,12 +37,12 @@ services:
       retries: 3
 
   # Organization Service
-  organization-service:
-    build: ./services/organization-service
+  organization:
+    build: ./services/organization
     ports:
       - "8082:8082"
     environment:
-      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathu_erp?sslmode=disable
+      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathuerp?sslmode=disable
       - JWT_SECRET: your-super-secret-jwt-key
       - LOG_LEVEL: info
       - PORT: 8082
@@ -58,12 +58,12 @@ services:
       retries: 3
 
   # Attendance Service
-  attendance-service:
-    build: ./services/attendance-service
+  attendance:
+    build: ./services/attendance
     ports:
       - "8083:8083"
     environment:
-      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathu_erp?sslmode=disable
+      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathuerp?sslmode=disable
       - JWT_SECRET: your-super-secret-jwt-key
       - LOG_LEVEL: info
       - PORT: 8083
@@ -79,12 +79,12 @@ services:
       retries: 3
 
   # Leave Service
-  leave-service:
-    build: ./services/leave-service
+  leave:
+    build: ./services/leave
     ports:
       - "8084:8084"
     environment:
-      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathu_erp?sslmode=disable
+      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathuerp?sslmode=disable
       - JWT_SECRET: your-super-secret-jwt-key
       - LOG_LEVEL: info
       - PORT: 8084
@@ -100,12 +100,12 @@ services:
       retries: 3
 
   # Loan Service
-  loan-service:
-    build: ./services/loan-service
+  loan:
+    build: ./services/loan
     ports:
       - "8085:8085"
     environment:
-      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathu_erp?sslmode=disable
+      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathuerp?sslmode=disable
       - JWT_SECRET: your-super-secret-jwt-key
       - LOG_LEVEL: info
       - PORT: 8085
@@ -121,12 +121,12 @@ services:
       retries: 3
 
   # Payroll Service
-  payroll-service:
-    build: ./services/payroll-service
+  payroll:
+    build: ./services/payroll
     ports:
       - "8086:8086"
     environment:
-      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathu_erp?sslmode=disable
+      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathuerp?sslmode=disable
       - JWT_SECRET: your-super-secret-jwt-key
       - LOG_LEVEL: info
       - PORT: 8086
@@ -142,12 +142,12 @@ services:
       retries: 3
 
   # Earnings Service
-  earnings-service:
-    build: ./services/earnings-service
+  earnings:
+    build: ./services/earnings
     ports:
       - "8087:8087"
     environment:
-      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathu_erp?sslmode=disable
+      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathuerp?sslmode=disable
       - JWT_SECRET: your-super-secret-jwt-key
       - LOG_LEVEL: info
       - PORT: 8087
@@ -163,12 +163,12 @@ services:
       retries: 3
 
   # Deductions Service
-  deductions-service:
-    build: ./services/deductions-service
+  deductions:
+    build: ./services/deductions
     ports:
       - "8088:8088"
     environment:
-      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathu_erp?sslmode=disable
+      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathuerp?sslmode=disable
       - JWT_SECRET: your-super-secret-jwt-key
       - LOG_LEVEL: info
       - PORT: 8088
@@ -184,12 +184,12 @@ services:
       retries: 3
 
   # Performance Service
-  performance-service:
-    build: ./services/performance-service
+  performance:
+    build: ./services/performance
     ports:
       - "8089:8089"
     environment:
-      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathu_erp?sslmode=disable
+      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathuerp?sslmode=disable
       - JWT_SECRET: your-super-secret-jwt-key
       - LOG_LEVEL: info
       - PORT: 8089
@@ -205,12 +205,12 @@ services:
       retries: 3
 
   # Banking Service
-  banking-service:
-    build: ./services/banking-service
+  banking:
+    build: ./services/banking
     ports:
       - "8090:8090"
     environment:
-      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathu_erp?sslmode=disable
+      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathuerp?sslmode=disable
       - JWT_SECRET: your-super-secret-jwt-key
       - LOG_LEVEL: info
       - PORT: 8090
@@ -226,12 +226,12 @@ services:
       retries: 3
 
   # Auth Service
-  auth-service:
-    build: ./services/auth-service
+  auth:
+    build: ./services/auth
     ports:
       - "8091:8091"
     environment:
-      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathu_erp?sslmode=disable
+      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathuerp?sslmode=disable
       - JWT_SECRET: your-super-secret-jwt-key
       - LOG_LEVEL: info
       - PORT: 8091
@@ -247,12 +247,12 @@ services:
       retries: 3
 
   # Config Service
-  config-service:
-    build: ./services/config-service
+  config:
+    build: ./services/config
     ports:
       - "8092:8092"
     environment:
-      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathu_erp?sslmode=disable
+      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathuerp?sslmode=disable
       - JWT_SECRET: your-super-secret-jwt-key
       - LOG_LEVEL: info
       - PORT: 8092
@@ -268,12 +268,12 @@ services:
       retries: 3
 
   # Audit Service
-  audit-service:
-    build: ./services/audit-service
+  audit:
+    build: ./services/audit
     ports:
       - "8093:8093"
     environment:
-      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathu_erp?sslmode=disable
+      - DATABASE_URL: postgres://postgres:password@postgres:5432/yathuerp?sslmode=disable
       - JWT_SECRET: your-super-secret-jwt-key
       - LOG_LEVEL: info
       - PORT: 8093

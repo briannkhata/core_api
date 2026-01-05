@@ -1,4 +1,4 @@
-module yathu_erp/services/config-service
+module yathuerp/services/config
 
 go 1.22
 

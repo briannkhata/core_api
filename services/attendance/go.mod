@@ -1,4 +1,4 @@
-module yathu_erp/services/attendance-service
+module yathuerp/services/attendance
 
 go 1.22
 

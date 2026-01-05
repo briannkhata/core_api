@@ -13,8 +13,8 @@ import (
 	"yathu_erp/shared/logger"
 	"yathu_erp/shared/middleware"
 
-	"yathu_erp/services/employee-service/internal/infrastructure/http"
-	"yathu_erp/services/employee-service/internal/infrastructure/persistence/postgres"
+	"yathu_erp/services/employee/internal/infrastructure/http"
+	"yathu_erp/services/employee/internal/infrastructure/persistence/postgres"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
@@ -36,7 +36,7 @@ func main() {
 	}
 
 	// Run migrations
-	if err := database.RunMigrations(db, "employee-service"); err != nil {
+	if err := database.RunMigrations(db, "employee"); err != nil {
 		log.Fatal("Failed to run migrations:", err)
 	}
 
@@ -63,7 +63,7 @@ func main() {
 	app.Get("/health", func(c *fiber.Ctx) error {
 		return c.JSON(fiber.Map{
 			"status":  "ok",
-			"service": "employee-service",
+			"service": "employee",
 			"version": "1.0.0",
 		})
 	})
@@ -78,7 +78,7 @@ func main() {
 		signal.Notify(sig, syscall.SIGINT, syscall.SIGTERM)
 		<-sig
 
-		logger.Info("Shutting down employee-service...")
+		logger.Info("Shutting down employee...")
 
 		ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 		defer cancel()

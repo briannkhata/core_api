@@ -1,4 +1,4 @@
-module yathu_erp/services/performance-service
+module yathuerp/services/performance
 
 go 1.22
 

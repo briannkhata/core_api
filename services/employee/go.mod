@@ -1,4 +1,4 @@
-module yathu_erp/services/employee-service
+module yathuerp/services/employee
 
 go 1.22
 

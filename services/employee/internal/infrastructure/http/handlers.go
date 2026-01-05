@@ -3,8 +3,8 @@ package http
 import (
 	"strconv"
 
-	"yathu_erp/services/employee-service/internal/application"
-	"yathu_erp/shared/utils"
+	"yathuerp/services/employee-service/internal/application"
+	"yathuerp/shared/utils"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"

@@ -1,4 +1,4 @@
-module yathu_erp/services/deductions-service
+module yathuerp/services/deductions
 
 go 1.22
 

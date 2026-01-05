@@ -8,10 +8,10 @@ import (
 	"syscall"
 	"time"
 
-	"yathu_erp/shared/config"
-	"yathu_erp/shared/database"
-	"yathu_erp/shared/logger"
-	"yathu_erp/shared/middleware"
+	"yathuerp/shared/config"
+	"yathuerp/shared/database"
+	"yathuerp/shared/logger"
+	"yathuerp/shared/middleware"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
@@ -33,7 +33,7 @@ func main() {
 	}
 
 	// Run migrations
-	if err := database.RunMigrations(db, "audit-service"); err != nil {
+	if err := database.RunMigrations(db, "audit"); err != nil {
 		log.Fatal("Failed to run migrations:", err)
 	}
 
@@ -60,7 +60,7 @@ func main() {
 	app.Get("/health", func(c *fiber.Ctx) error {
 		return c.JSON(fiber.Map{
 			"status":  "ok",
-			"service": "audit-service",
+			"service": "audit",
 			"version": "1.0.0",
 		})
 	})
@@ -74,7 +74,7 @@ func main() {
 		signal.Notify(sig, syscall.SIGINT, syscall.SIGTERM)
 		<-sig
 
-		logger.Info("Shutting down audit-service...")
+		logger.Info("Shutting down audit...")
 
 		ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 		defer cancel()
@@ -95,7 +95,7 @@ func setupRoutes(app *fiber.App, db interface{}) {
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.JSON(fiber.Map{
 			"message":    "YathuERP Audit Service is running",
-			"service":    "audit-service",
+			"service":    "audit",
 			"go_version": "1.22",
 		})
 	})
